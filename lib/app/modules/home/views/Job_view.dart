@@ -15,7 +15,7 @@ class JobView extends GetView<CreateJobController> {
   Widget build(BuildContext context) {
     Get.put(CreateJobController());
     return Scaffold(
-      appBar: JobAppbar(),
+      appBar: const JobAppbar(),
       body: JobBody(),
     );
   }

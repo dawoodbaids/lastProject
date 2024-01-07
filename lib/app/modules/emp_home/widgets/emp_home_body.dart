@@ -9,6 +9,7 @@ import 'package:lavoro/app/modules/emp_home/widgets/card_view.dart';
 import '../../../global_widgets/adv.dart';
 import '../../../global_widgets/text_theme.dart';
 import '../../home/category/lang.dart';
+import '../emp_category/jobs_it.dart';
 
 
 class EmpHomeBody extends StatelessWidget {
@@ -51,7 +52,7 @@ class EmpHomeBody extends StatelessWidget {
             SizedBox(height: 20),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: CategoriesRow(),
+            child: EmpCategoriesRow(),
           ),
           
           SizedBox(height: 15),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavoro/app/modules/home/controllers/home_controller.dart';
 import 'package:lavoro/app/modules/home/controllers/job_controller.dart';
+import '../../../data/model/user_model.dart';
 import '../../../global_widgets/custom_drawer.dart';
 // Make sure to import the BottomNavBar widget
 import '../widgets/buttom_bar.dart';
@@ -18,13 +19,15 @@ class HomeView extends GetView<HomeController> {
       drawer: const CustomDrawer(),
       appBar: const HomeAppBar(),
       body: const HomeBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.to(const JobView()); // Navigates to the Create class
-        },
-        tooltip: 'Add',
-        child: const Icon(Icons.add),
-      ),
+        floatingActionButton: UserAccount.info?.isCompany == true
+          ? FloatingActionButton(
+              onPressed: () {
+                Get.to(const JobView());
+              },
+              tooltip: 'Add',
+              child: const Icon(Icons.add),
+            )
+          : null,
       bottomNavigationBar: BottomNavBar(
         selectedIndex: 0,
         onTabChange: (index) {

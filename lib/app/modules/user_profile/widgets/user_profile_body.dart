@@ -17,6 +17,7 @@ class UserProfileBody extends StatelessWidget {
   UserProfileBody({
     Key? key,
     this.company,
+    
     this.isnotuser = false,
   }) : super(key: key);
 

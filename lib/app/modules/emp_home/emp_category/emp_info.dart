@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 import '../../user_profile/view/user_profile_view.dart';
 
-class CompanyInfo extends StatelessWidget {
+class EmpInfo extends StatelessWidget {
   final String categoryName;
   final String skill;
 
-  const CompanyInfo({
+  const EmpInfo({
     Key? key,
     required this.categoryName,
     required this.skill,
@@ -34,7 +34,7 @@ class CompanyInfo extends StatelessWidget {
       body: StreamBuilder<QuerySnapshot>(
   stream: FirebaseFirestore.instance
       .collection('users')
-      .where('isCompany', isEqualTo: true)
+      .where('isCompany', isEqualTo: false)
       .where('selectedjobs', isEqualTo: categoryName)
       .where('selectedLanguage', arrayContains: skill)
       .snapshots(),
@@ -42,7 +42,7 @@ class CompanyInfo extends StatelessWidget {
     if (snapshot.connectionState == ConnectionState.waiting) {
       return const Center(child: CircularProgressIndicator());
     } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-      return const Center(child: Text('No data found'));
+      return const Center(child: Text('No Users Yet'));
     } else {
       return ListView.builder(
         itemCount: snapshot.data!.docs.length,
