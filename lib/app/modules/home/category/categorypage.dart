@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/job_controller.dart';
+import 'Company_info.dart';
 
 class CategoryPage extends StatelessWidget {
   final String categoryName;
@@ -70,7 +71,20 @@ class CategoryPage extends StatelessWidget {
       width = 300;
       height = 100;
     }
-    return Card(
+     return GestureDetector(
+    onTap: () {
+      // Navigate to DetailPage and pass category name and skill text
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CompanyInfo(
+            categoryName: categoryName,
+            skill: skill,
+          ),
+        ),
+      );
+    },
+    child: Card(
       color: Colors.white,
       elevation: 3,
       child: Padding(
@@ -98,6 +112,6 @@ class CategoryPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
