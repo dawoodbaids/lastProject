@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,10 +10,13 @@ class CustomProfileListTile extends StatelessWidget {
   final IconData icons;
   final Function()? onTap;
   final bool showCopyButton;
+  final List<String>? text; // Making the list optional by using List<String>?
+
   const CustomProfileListTile({
     Key? key,
     required this.label,
     required this.icons,
+    this.text, // Making the list optional
     this.onTap,
     this.showCopyButton = true,
   }) : super(key: key);
@@ -37,6 +38,17 @@ class CustomProfileListTile extends StatelessWidget {
         ),
         leading: Icon(icons),
         title: Text(label),
+        subtitle: text != null && text!.isNotEmpty
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: text!.map((item) {
+                  return Text(
+                    item,
+                    style: TextStyle(fontSize: 14), // Adjust font size as needed
+                  );
+                }).toList(),
+              )
+            : null,
         onTap: onTap,
         trailing: showCopyButton
             ? CustomButton(

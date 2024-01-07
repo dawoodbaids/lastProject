@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_import, must_be_immutable
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -74,6 +74,11 @@ class UserProfileBody extends StatelessWidget {
           icons: Icons.description,
           showCopyButton: false,
         ),
+         CustomProfileListTile(
+          label: isnotuser ? company!.selectedjobs : user.selectedjobs,
+          icons: Icons.description,
+          showCopyButton: false,
+        ),
         // Displaying selected languages
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,6 +111,7 @@ class UserProfileBody extends StatelessWidget {
         ),
         SizedBox(height: Get.height * .1),
       ],
+      
     );
   }
 }

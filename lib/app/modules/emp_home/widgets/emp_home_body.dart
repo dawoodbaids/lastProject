@@ -1,18 +1,23 @@
 // ... other imports
 
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lavoro/app/data/model/user_model.dart';
 import 'package:lavoro/app/modules/emp_home/widgets/card_view.dart';
 
+import '../../../data/model/companyModel.dart';
+import '../../../data/model/job_model.dart';
 import '../../../global_widgets/adv.dart';
 import '../../../global_widgets/text_theme.dart';
 import '../../home/category/lang.dart';
+import '../../home/widgets/home_card.dart';
+import '../controllers/emp_home_controller.dart';
 import '../emp_category/jobs_it.dart';
 
 
-class EmpHomeBody extends StatelessWidget {
+class EmpHomeBody extends GetView<EmpHomeController> {
   const EmpHomeBody({Key? key});
 
   @override
@@ -78,19 +83,24 @@ class EmpHomeBody extends StatelessWidget {
           ),
           
           // Use ListView.builder to display multiple CardViews
-          ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount:
-                10, 
-                // Replace with the actual number of cards you want to display
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: EmpCardView(),
-              );
-            },
-          ),
+            Obx(
+            () => ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: controller.allusers.length,
+              itemBuilder: (context, index) {
+                UserAccount users= controller.allusers[index];
+
+                      
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child:  EmpCardView(users: users),
+                        );
+                     
+                   
+              },
+            ),
+          )
         ],
       ),
     );

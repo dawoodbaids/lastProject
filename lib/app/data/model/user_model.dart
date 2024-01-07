@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: unused_import, unnecessary_this
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -46,8 +48,8 @@ class UserAccount extends GetxController {
       'jobDescrption': descrption,
       'email': email,
       'country': country,
-    'selectedLanguage': selectedLanguage,
-     '  experience': experience,
+       'Programing Language': selectedLanguage,
+      'experience': experience,
       'selectedjobs' :selectedjobs,
       'isCompany': isCompany ?? false,
     };
@@ -65,7 +67,7 @@ class UserAccount extends GetxController {
        selectedLanguage: json['Programing Language'] != null
           ? List<String>.from(json['Programing Language'])
           : ["Null"],
-      selectedjobs: json['jobs'] ?? "SelectedJobs",
+      selectedjobs: json['selectedjobs'] ?? "selectedjobs",
         experience: json['experience'] ?? "experience",
         isCompany: json['isCompany'] ?? false);
     return info!;
@@ -108,7 +110,7 @@ class UserAccount extends GetxController {
       email: $email,
       countrey:$country,
    selectedLanguage:$selectedLanguage,
-//     selectedjobs:$selectedjobs
+       selectedjobs:$selectedjobs
     experience:$experience,
     isCompany:$isCompany,
     )''';

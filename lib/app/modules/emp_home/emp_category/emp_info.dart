@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, avoid_print, unnecessary_brace_in_string_interps
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,7 +38,7 @@ class EmpInfo extends StatelessWidget {
       .collection('users')
       .where('isCompany', isEqualTo: false)
       .where('selectedjobs', isEqualTo: categoryName)
-      .where('selectedLanguage', arrayContains: skill)
+      .where('Programing Language', arrayContains: skill)
       .snapshots(),
   builder: (context, snapshot) {
     if (snapshot.connectionState == ConnectionState.waiting) {

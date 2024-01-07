@@ -25,7 +25,7 @@ class EmpHomeView extends StatelessWidget {
               Get.toNamed('/home'); // Navigate to HomeView
               break;
             case 1:
-             
+              Get.toNamed('/JOBS');
               break;
             case 2:
               Get.toNamed('/user-profile'); // Navigate to UserProfileView page

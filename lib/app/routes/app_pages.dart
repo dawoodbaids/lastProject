@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:get/get.dart';
 
 import 'package:lavoro/app/modules/auth/bindings/register_banding_company.dart';
 
 import 'package:lavoro/app/modules/home/views/Job_view.dart';
+import 'package:lavoro/app/modules/jobs/view/all_jobs_view.dart';
 
 import '../modules/auth/bindings/register_binding_employe.dart';
 import '../modules/auth/bindings/signin_binding.dart';
@@ -111,15 +114,11 @@ class AppPages {
       page: () => const JobView(),
       binding: JobBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.CHAT,
-    //   page: () => const ChatUser(),
-    //   //binding: JobBinding(),
-    // ),
-    //  GetPage(
-    //   name: _Paths.Ai,
-    //   page: () => const AiPage(),
-
-    // ),
+    GetPage(
+      name: _Paths.ALLJOBS,
+      page: () =>  AllJobsView(),
+      binding: JobBinding(),
+    ),
+    
   ];
 }

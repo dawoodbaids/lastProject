@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -91,7 +93,7 @@ class CreateJobController extends GetxController {
 
   // ignore: non_constant_identifier_names
   final UserRepo = Get.put(CreateJobRepositry());
-  var uuid = Uuid();
+  var uuid = const Uuid();
 
   @override
   void onInit() {

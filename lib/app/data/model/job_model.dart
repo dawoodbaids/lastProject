@@ -1,10 +1,10 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, unused_field
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:get/get.dart';
 import 'package:lavoro/app/data/provider/user_firebase.dart';
-import 'package:uuid/uuid.dart';
+
 
 class CreateJobAcount extends GetxController {
   final String jobdescription;

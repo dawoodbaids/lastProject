@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unrelated_type_equality_checks
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavoro/app/modules/home/controllers/job_controller.dart';
@@ -10,7 +11,7 @@ import '../../../global_widgets/text_theme.dart';
 import '../../auth/forget_page/themehelper.dart';
 
 class JobBody extends GetView<CreateJobController> {
-  JobBody({Key? key}) : super(key: key);
+  const JobBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -132,9 +133,13 @@ class JobBody extends GetView<CreateJobController> {
 
                                     // Toggle the selected state
                                     controller.addToSelectedLanguages(language);
-                                    print(controller.selectedLanguages);
-                                    print(controller.selectedLanguages
+                                    if (kDebugMode) {
+                                      print(controller.selectedLanguages);
+                                    }
+                                    if (kDebugMode) {
+                                      print(controller.selectedLanguages
                                         .contains(language));
+                                    }
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(5.0),

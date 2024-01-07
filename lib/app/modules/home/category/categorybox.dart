@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:lavoro/app/modules/home/category/categoryView.dart';
 import 'categorypage.dart';
@@ -50,7 +52,7 @@ class CategoryBox extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             const SizedBox(height: 5),
-            Text(name, textAlign: TextAlign.center,style: TextStyle(color: Colors.black),
+            Text(name, textAlign: TextAlign.center,style: const TextStyle(color: Colors.black),
             ),
             if (name == "Data Scientist")
               const SizedBox(height: 20),

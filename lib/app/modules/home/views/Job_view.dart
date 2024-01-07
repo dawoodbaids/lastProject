@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, unnecessary_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,8 +14,8 @@ class JobView extends GetView<CreateJobController> {
   @override
   Widget build(BuildContext context) {
     Get.put(CreateJobController());
-    return Scaffold(
-      appBar: const JobAppbar(),
+    return const Scaffold(
+      appBar: JobAppbar(),
       body: JobBody(),
     );
   }

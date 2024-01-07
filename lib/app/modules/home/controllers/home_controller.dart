@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_print, use_rethrow_when_possible
+
 import 'package:get/get.dart';
 import 'package:lavoro/app/data/model/companyModel.dart';
 import 'package:lavoro/app/data/model/job_model.dart';

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavoro/app/data/model/user_model.dart';
@@ -13,7 +14,7 @@ import '../../../global_widgets/text_theme.dart';
 import '../controllers/signin_controller.dart';
 
 import '../forget_page/for.dart';
-import '../forget_page/forgetpassword.dart';
+
 
 class SigninBody extends GetView<SigninController> {
   const SigninBody({Key? key}) : super(key: key);
@@ -22,7 +23,9 @@ class SigninBody extends GetView<SigninController> {
 
   @override
   Widget build(BuildContext context) {
-    print(UserAccount.info);
+    if (kDebugMode) {
+      print(UserAccount.info);
+    }
     double headerHeight = 300;
     return Scaffold(
       backgroundColor: Get.theme.colorScheme.background,

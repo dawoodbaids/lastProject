@@ -22,6 +22,7 @@ abstract class Routes {
   static const SEARCH = _Paths.SEARCH;
   static const USER_PROFILE = _Paths.USER_PROFILE;
   static const Create = _Paths.JOB;
+  static const ALLJOBS = _Paths.ALLJOBS;
   static const INFO_PAGE = _Paths.INFO_PAGE;
 }
 
@@ -45,4 +46,5 @@ abstract class _Paths {
   static const JOB = '/JOB';
    static const EMPHOME = '/emp_home';
     static const Ai= '/Ai';
+      static const ALLJOBS = '/JOBS';
 }

@@ -1,13 +1,9 @@
-// ignore_for_file: unnecessary_this
 
-import 'dart:developer';
+// ignore_for_file: unnecessary_this, file_names
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:get/get.dart';
 
-import '../provider/user_firebase.dart';
 
 class CompanyModel extends GetxController {
   static CompanyModel? info;
@@ -46,8 +42,8 @@ class CompanyModel extends GetxController {
       'jobDescrption': descrption,
       'email': email,
       'country': country,
-      'selectedLanguage': selectedLanguage,
-     '  experience': experience,
+      'Programing Language': selectedLanguage,
+     'experience': experience,
       'selectedjobs' :selectedjobs,
       'isCompany': isCompany ?? false,
     };
@@ -65,7 +61,7 @@ class CompanyModel extends GetxController {
          selectedLanguage: json['Programing Language'] != null
           ? List<String>.from(json['Programing Language'])
           : ["Null"],
-      selectedjobs: json['jobs'] ?? "SelectedJobs",
+      selectedjobs: json['selectedjobs'] ?? "selectedjobs",
         experience: json['experience'] ?? "experience",
         isCompany: json['isCompany'] ?? false);
     return info!;
@@ -108,7 +104,7 @@ class CompanyModel extends GetxController {
       email: $email,
       countrey:$country,
     selectedLanguage:$selectedLanguage,
-//     selectedjobs:$selectedjobs
+    selectedjobs:$selectedjobs
     isCompany:$isCompany,
     )''';
   }

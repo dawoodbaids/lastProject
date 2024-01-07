@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavoro/app/data/model/user_model.dart';
 
-import '../../../core/utils/helpers/custom_snack_bar.dart';
-import '../../../core/utils/helpers/system_helper.dart';
+
 import '../../../data/provider/user_firebase.dart';
-import '../../../data/repositorys/auth_repository.dart';
+
 import '../../../routes/app_pages.dart';
 
 class SigninController extends GetxController {
@@ -28,7 +28,9 @@ class SigninController extends GetxController {
       await auth.signInWithEmailAndPassword(email: email, password: password);
 
       await DatabaseFirestore.getUser();
-      print(UserAccount.info);
+      if (kDebugMode) {
+        print(UserAccount.info);
+      }
 
       Get.offAllNamed(Routes.HOME);
 

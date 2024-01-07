@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable, avoid_print, sort_child_properties_last, prefer_const_constructors
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable, avoid_print, sort_child_properties_last, prefer_const_constructors, unrelated_type_equality_checks
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -68,7 +68,7 @@ class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple),
                       borderRadius: BorderRadius.circular(18.0),
-                      color: Colors.white,
+                      color: Colors.black12,
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -134,7 +134,7 @@ class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple),
                       borderRadius: BorderRadius.circular(18.0),
-                      color: Colors.white,
+                      color: Colors.black12,
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -210,12 +210,13 @@ class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.purple),
                           borderRadius: BorderRadius.circular(8.0),
-                          color: Colors.grey[300],
+                          color: Colors.grey,
                         ),
                         padding: EdgeInsets.all(4.0),
                         child: DropdownButton<String>(
                           hint: const Text(
-                              '                                                                Select City'),
+                              '                                                                Select City'
+                              ,style: TextStyle(color: Colors.black)),
                           value:
                               controller.selectedCity.value.isNotEmpty &&
                                       controller.countries.contains(

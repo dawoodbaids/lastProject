@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../routes/app_pages.dart';
-import '../model/user_model.dart';
+
 
 abstract class AuthRepository extends GetxService {
   static final firebaseAuth = FirebaseAuth.instance;

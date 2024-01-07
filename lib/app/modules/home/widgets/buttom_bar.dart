@@ -38,8 +38,8 @@ class BottomNavBar extends StatelessWidget {
               text: "Jobs",
             ),
             GButton(
-              icon: Icons.message,
-              text: "Chat",
+               icon: Icons.work,
+              text: "Jobs",
             ),
             GButton(
               icon: Icons.person,

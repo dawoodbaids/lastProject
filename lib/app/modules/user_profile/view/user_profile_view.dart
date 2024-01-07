@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_import, must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavoro/app/data/model/companyModel.dart';
@@ -39,7 +39,7 @@ class UserProfileView extends StatelessWidget {
               Get.toNamed('/home'); // Navigate to HomeView
               break;
             case 1:
-              Get.toNamed('/chat'); // Navigate to ChatUser page
+              Get.toNamed('/JOBS'); // Navigate to ChatUser page
               break;
             case 2:
               // Do nothing or handle the UserProfileView tab as needed

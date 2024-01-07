@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -74,7 +74,7 @@ class _CustomHeaderWidgetState extends State<CustomHeaderWidget> {
                   bottom: 0,
                   right: 0,
                   child: widget.isnotuser
-                      ? SizedBox()
+                      ? const SizedBox()
                       : MaterialButton(
                           height: 35,
                           minWidth: 35,
@@ -126,14 +126,7 @@ class _CustomHeaderWidgetState extends State<CustomHeaderWidget> {
           const SizedBox(height: 20),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.remove_red_eye),
-              SizedBox(width: 10),
-              Text(
-                'visitors: 0',
-                style: TextStyle(fontSize: 16),
-              ),
-            ],
+            
           ),
         ]),
       ),

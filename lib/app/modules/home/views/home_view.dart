@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavoro/app/modules/home/controllers/home_controller.dart';
@@ -11,7 +13,7 @@ import '../widgets/home_body.dart';
 import 'Job_view.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key});
+  const HomeView({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +21,8 @@ class HomeView extends GetView<HomeController> {
       drawer: const CustomDrawer(),
       appBar: const HomeAppBar(),
       body: const HomeBody(),
-        floatingActionButton: UserAccount.info?.isCompany == true
-          ? FloatingActionButton(
-              onPressed: () {
-                Get.to(const JobView());
-              },
-              tooltip: 'Add',
-              child: const Icon(Icons.add),
-            )
-          : null,
+       
+          
       bottomNavigationBar: BottomNavBar(
         selectedIndex: 0,
         onTabChange: (index) {
@@ -36,7 +31,7 @@ class HomeView extends GetView<HomeController> {
               // Do nothing or handle the Home tab as needed
               break;
             case 1:
-              Get.toNamed('/chat'); // Navigate to ChatUser page
+              Get.toNamed('/JOBS'); // Navigate to ChatUser page
               break;
             case 2:
               Get.toNamed('/user-profile'); // Navigate to UserProfileView page

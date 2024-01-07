@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, avoid_print
+
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';

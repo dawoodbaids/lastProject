@@ -9,27 +9,29 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:lavoro/app/data/model/companyModel.dart';
 
 import 'package:lavoro/app/data/model/job_model.dart';
-import 'package:lavoro/app/data/model/user_model.dart';
 import 'package:lavoro/app/modules/company_profile/compant_profile_view.dart';
 import 'package:lavoro/app/modules/user_profile/view/user_profile_view.dart';
 
-class EmpCardView extends StatefulWidget {
- 
-  UserAccount users;
-  EmpCardView({
+class JobsPages extends StatefulWidget {
+  CreateJobAcount job;
+  CompanyModel company;
+  JobsPages({
     Key? key,
-    required this.users,
-  
+    required this.job,
+    required this.company,
   }) : super(key: key);
 
   @override
-  _EmpCardView createState() => _EmpCardView ();
+  _MyCardView createState() => _MyCardView();
 }
 
-class _EmpCardView  extends State<EmpCardView > {
+class _MyCardView extends State<JobsPages> {
   @override
+  
   Widget build(BuildContext context) {
-   
+    if (kDebugMode) {
+      print(widget.job.companyId);
+    }
     return Card(
       borderOnForeground: true,
       elevation: 100,
@@ -43,10 +45,15 @@ class _EmpCardView  extends State<EmpCardView > {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-
+                  onTap: () {
+                    Get.to(CompanyProfileView(
+                      company: widget.company,
+                      isnotuser: true,
+                    ));
+                  },
                   child: CircleAvatar(
                     radius: 30,
-                    backgroundImage: NetworkImage(widget.users.imageUrl),
+                    backgroundImage: NetworkImage(widget.company.imageUrl),
                   ),
                 ),
                 SizedBox(width: 12),
@@ -55,24 +62,33 @@ class _EmpCardView  extends State<EmpCardView > {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        ' ${widget.users.username}',
+                        ' ${widget.company.username}',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      Divider(
+            height: 0,
+            thickness: 1,
+            color: Colors.black,
+          ),
                       Text(
-                        ' ${widget.users.email}',
+                        ' ${widget.job.title}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                         
                       ),
-                         Divider(height:12,),
+                         Divider(
+            height: 0,
+            thickness: 1,
+            color: Colors.black,
+          ),
                            SizedBox(height: 4),
                       Text(
-                        'Phone Number : ${widget.users.phoneNumber}',
+                        ': ${widget.job.selectedjobs}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -80,30 +96,20 @@ class _EmpCardView  extends State<EmpCardView > {
                         
                       ),
                       SizedBox(height: 4),
-                        Divider(height:12,),
+                       Divider(
+            height: 0,
+            thickness: 1,
+            color: Colors.black,
+          ),
                       Text(
-                        ' ${widget.users.selectedjobs}',
+                        'programing languges that job need : ${widget.job.selectedLanguage}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                         
                       ),
-
-                      SizedBox(height: 4),
-                         Divider(height:12,),
-                       Text(
-                        ' City: ${widget.users.country}',
-                        style: TextStyle(fontSize: 16,
-                         fontWeight: FontWeight.bold,),
-                        
-                      ),
-                       SizedBox(height: 4),
-                       Divider(height:12,),
-                      Text(
-                        'Programing languges: ${widget.users.selectedLanguage}',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
-                      ),
+                      
                       SizedBox(height: 4),
                     ],
                   ),
@@ -111,7 +117,7 @@ class _EmpCardView  extends State<EmpCardView > {
               ],
             ),
           ),
-          Divider(
+         Divider(
             height: 0,
             thickness: 1,
             color: Colors.black,
@@ -119,18 +125,15 @@ class _EmpCardView  extends State<EmpCardView > {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              '${widget.users.descrption}',
+              '${widget.job.jobdescription}',
               style: TextStyle(fontSize: 16),
             ),
           ),
-        
-          SizedBox(height: 8),
-          SizedBox(
-            height: 12,
-          ),
+       
+          
           Divider(
             height: 0,
-            thickness: 1,
+            thickness: 2,
             color: Colors.black,
           ),
         ],

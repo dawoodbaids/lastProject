@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,6 +42,13 @@ class CreateJobRepositry extends GetxController {
     return _firestore.collection("Jobs").snapshots().map((snapshot) {
       return snapshot.docs
           .map((doc) => CreateJobAcount.formJson(doc.data()))
+          .toList();
+    });
+  }
+    Stream<List<UserAccount>> getAllusersStream() {
+    return _firestore.collection("users").snapshots().map((snapshot) {
+      return snapshot.docs
+          .map((doc) => UserAccount.formJson(doc.data()))
           .toList();
     });
   }
