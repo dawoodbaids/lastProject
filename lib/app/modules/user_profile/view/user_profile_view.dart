@@ -30,7 +30,7 @@ class UserProfileView extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-      body: UserProfileBody(company: company, isnotuser: isnotuser),
+      body: UserProfileBody(),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: 2, // Adjust the selectedIndex for UserProfileView
         onTabChange: (index) {

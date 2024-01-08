@@ -67,8 +67,17 @@ class EmpHomeBody extends GetView<EmpHomeController> {
             color: Colors.black,
           ),
             SizedBox(height: 20),
+          if(UserAccount.info?.isCompany==false)
           Text(
-            "        Employee IN Application",
+            "    Users with same interests",
+            style: AppStyles.headLine3.copyWith(
+              color: Get.theme.colorScheme.onBackground,
+            ),
+            textAlign: TextAlign.start,
+          ),
+          if(UserAccount.info?.isCompany==true)
+          Text(
+            "    Recommended Users for you.",
             style: AppStyles.headLine3.copyWith(
               color: Get.theme.colorScheme.onBackground,
             ),
@@ -90,11 +99,11 @@ class EmpHomeBody extends GetView<EmpHomeController> {
               itemCount: controller.allusers.length,
               itemBuilder: (context, index) {
                 UserAccount users= controller.allusers[index];
-
+UserAccount userss=UserAccount.info!;
                       
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child:  EmpCardView(users: users),
+                          child:  EmpCardView(users: users, userss: userss,),
                         );
                      
                    

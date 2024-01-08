@@ -12,63 +12,63 @@ class CategoriesRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         CategoryBox(
-          imagePath: 'assets/images/web.jpg',
+          imagePath: 'assets/images/jobs/web.jpg',
           name: 'Web Developer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/mobile.png',
+          imagePath: 'assets/images/jobs/mobile.png',
           name: 'Mobile App Developer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/soft.jpg',
+          imagePath: 'assets/images/jobs/soft.jpg',
           name: 'Software Engineer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/data.jpg',
+          imagePath: 'assets/images/jobs/data.jpg',
           name: 'Data Scientist',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/net.png',
+          imagePath: 'assets/images/jobs/net.png',
           name: 'Network Engineer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/cyper.jpg',
+          imagePath: 'assets/images/jobs/cyper.jpg',
           name: 'Cybersecurity Analyst',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/system.jpg',
+          imagePath: 'assets/images/jobs/system.jpg',
           name: 'System Administrator',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/base.png',
+          imagePath: 'assets/images/jobs/base.png',
           name: 'Database Administrator',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/ai.jpg',
+          imagePath: 'assets/images/jobs/ai.jpg',
           name: 'AI Developer',
           
           onPressed: () {
@@ -76,14 +76,14 @@ class CategoriesRow extends StatelessWidget {
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/dev.jpg',
+          imagePath: 'assets/images/jobs/dev.jpg',
           name: 'DevOps Engineer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         CategoryBox(
-          imagePath: 'assets/images/game.png',
+          imagePath: 'assets/images/jobs/game.png',
           name: 'Game Developer',
           onPressed: () {
             handleCategorySelection();

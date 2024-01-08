@@ -12,13 +12,19 @@ import 'package:lavoro/app/data/model/job_model.dart';
 import 'package:lavoro/app/data/model/user_model.dart';
 import 'package:lavoro/app/modules/company_profile/compant_profile_view.dart';
 import 'package:lavoro/app/modules/user_profile/view/user_profile_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EmpCardView extends StatefulWidget {
  
   UserAccount users;
+
+   UserAccount userss;
+  
   EmpCardView({
     Key? key,
     required this.users,
+ 
+    required this.userss
   
   }) : super(key: key);
 
@@ -27,8 +33,28 @@ class EmpCardView extends StatefulWidget {
 }
 
 class _EmpCardView  extends State<EmpCardView > {
+ bool isDataAvailable = false;
   @override
+  void initState() {
+    super.initState();
+    checkDataAvailability();
+  }
+
+  void checkDataAvailability() {
+    // Check if company's selected languages match job's selected languages
+    List<String> list1 = widget.users.selectedLanguage;
+    List<String> list2 = widget.userss.selectedLanguage;
+    
+    bool languagesMatch = list1.any((language) => list2.contains(language));
+    bool jobsMatch = widget.users.selectedjobs.contains(widget.userss.selectedjobs);
+bool usermatch =widget.users.email.contains(widget.userss.email)==false;
+    setState(() {
+      // Set isDataAvailable to true if either condition is met
+      isDataAvailable = (usermatch&&(languagesMatch||jobsMatch));
+    });
+  }
   Widget build(BuildContext context) {
+    if (isDataAvailable) {
    
     return Card(
       borderOnForeground: true,
@@ -43,7 +69,14 @@ class _EmpCardView  extends State<EmpCardView > {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-
+onTap: () async {
+    final url = 'mailto:${widget.users.email}';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      print("no go");
+    }
+  },
                   child: CircleAvatar(
                     radius: 30,
                     backgroundImage: NetworkImage(widget.users.imageUrl),
@@ -60,6 +93,14 @@ class _EmpCardView  extends State<EmpCardView > {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
+                      ),
+                      Text(
+                        ' ${widget.users.email}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        
                       ),
                       Text(
                         ' ${widget.users.email}',
@@ -88,7 +129,9 @@ class _EmpCardView  extends State<EmpCardView > {
                           fontWeight: FontWeight.bold,
                         ),
                         
+                        
                       ),
+                      
 
                       SizedBox(height: 4),
                          Divider(height:12,),
@@ -137,4 +180,6 @@ class _EmpCardView  extends State<EmpCardView > {
       ),
     );
   }
+    return SizedBox();
+}
 }

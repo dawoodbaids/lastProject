@@ -24,11 +24,15 @@ abstract class Routes {
   static const Create = _Paths.JOB;
   static const ALLJOBS = _Paths.ALLJOBS;
   static const INFO_PAGE = _Paths.INFO_PAGE;
+  static const SETTINGS = _Paths.SETTINGS;
+  
+  
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
+   static const SETTINGS = '/setting';
   static const SPLASH = '/splash';
   static const INFO_PAGE = '/info';
   static const SIGNIN = '/signin';

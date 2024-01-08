@@ -36,38 +36,38 @@ class CategoryPage extends StatelessWidget {
   }
 
   Widget buildSkillCard(BuildContext context, String skill) {
-    String imagePath = 'assets/images/$skill.png';
+    String imagePath = 'assets/images/languges/$skill.png';
     double width = 100;
     double height = 100;
-    if (imagePath == 'assets/images/Cisco-IOS.png') {
+    if (imagePath == 'assets/images/languges/Cisco-IOS.png') {
       width = 200;
       height = 100;
     }
-    if (imagePath == 'assets/images/Unity.png') {
+    if (imagePath == 'assets/images/languges/Unity.png') {
       width = 150;
       height = 55;
     }
-    if (imagePath == 'assets/images/Unreal Engine.png') {
+    if (imagePath == 'assets/images/languges/Unreal Engine.png') {
       width = 136;
       height = 110;
     }
-    if (imagePath == 'assets/images/MySQL.png') {
+    if (imagePath == 'assets/images/languges/MySQL.png') {
       width = 200;
       height = 110;
     }
-    if (imagePath == 'assets/images/PyTorch.png') {
+    if (imagePath == 'assets/images/languges/PyTorch.png') {
       width = 200;
       height = 110;
     }
-    if (imagePath == 'assets/images/MongoDB.png') {
+    if (imagePath == 'assets/images/languges/MongoDB.png') {
       width = 200;
       height = 110;
     }
-    if (imagePath == 'assets/images/Oracle.png') {
+    if (imagePath == 'assets/images/languges/Oracle.png') {
       width = 200;
       height = 110;
     }
-    if (imagePath == 'assets/images/Linux-Shell-Scripting.png') {
+    if (imagePath == 'assets/images/languges/Linux-Shell-Scripting.png') {
       width = 300;
       height = 100;
     }

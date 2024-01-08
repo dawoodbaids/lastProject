@@ -3,16 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-import '../../../global_widgets/custom_button.dart';
+import '../../global_widgets/custom_button.dart';
 
-class CustomProfileListTile extends StatelessWidget {
+
+class CustomCompanyProfileListTile extends StatelessWidget {
   final String label;
   final IconData icons;
   final Function()? onTap;
   final bool showCopyButton;
   final List<String>? text; // Making the list optional by using List<String>?
 
-  const CustomProfileListTile({
+  const CustomCompanyProfileListTile({
     Key? key,
     required this.label,
     required this.icons,

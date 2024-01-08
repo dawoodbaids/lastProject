@@ -20,7 +20,9 @@ class RegisterBodyEmployee extends GetView<RegisterControllerEmployee> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+      Get.put(RegisterControllerEmployee());
+    return Scaffold(
+       body: Obx(() => Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Form(
@@ -249,10 +251,9 @@ class RegisterBodyEmployee extends GetView<RegisterControllerEmployee> {
                         ),
                         padding: const EdgeInsets.all(4.0),
                         child: DropdownButton<String>(
-                        
-                          hint: const Text( 
-                              '                                                               Select City'
-                              ,style: TextStyle(color: Colors.black),),
+                          hint: const Text(
+                              '                                                                Select City'
+                              ,style: TextStyle(color: Colors.black)),
                           value:
                               controller.selectedCity.value.isNotEmpty &&
                                       controller.countries.contains(
@@ -323,7 +324,7 @@ class RegisterBodyEmployee extends GetView<RegisterControllerEmployee> {
           ),
         ),
       ),
-    );
+    )));
   }
 }
 

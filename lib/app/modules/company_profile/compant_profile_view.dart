@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:lavoro/app/data/model/companyModel.dart';
 
-import '../user_profile/widgets/user_profile_body.dart';
 import 'company_profile_body.dart';
 
 class CompanyProfileView extends StatelessWidget {

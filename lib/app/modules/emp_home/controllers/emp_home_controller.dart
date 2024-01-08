@@ -20,13 +20,13 @@ class EmpHomeController extends GetxController {
   void onInit() {
     super.onInit();
     // Replace getAllJobs with getAllJobsStream
-   getAllusersStream();
+   getNonCompanyUsersStream();
   }
 
   final JobRepo = Get.put(CreateJobRepositry());
 
-  void getAllusersStream() {
-    JobRepo.getAllusersStream().listen((users) {
+  void getNonCompanyUsersStream() {
+    JobRepo.getNonCompanyUsersStream().listen((users) {
       allusers.assignAll(users);
       update();
     });

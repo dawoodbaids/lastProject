@@ -56,7 +56,7 @@ class InfoPageBody extends StatelessWidget {
                     ),
                     image: DecorationImage(
                       image: AssetImage('assets/logo/about.gif'),
-                      fit: BoxFit.fill,
+                     
                     ),
                   ),
                 ),
@@ -81,7 +81,7 @@ class InfoPageBody extends StatelessWidget {
                  contactAddresses(
                   title: 'Email',
                   subtitle: 'lavoro@emil.com',
-                  logo: 'assets/logo/email.gif',
+                  logo: 'assets/logo/gmail.gif',
                   url: 'https://web.whatsapp.com/',
                   color: Color.fromARGB(255, 253, 57, 3),
                 ),

@@ -45,13 +45,14 @@ class CreateJobRepositry extends GetxController {
           .toList();
     });
   }
-    Stream<List<UserAccount>> getAllusersStream() {
-    return _firestore.collection("users").snapshots().map((snapshot) {
-      return snapshot.docs
-          .map((doc) => UserAccount.formJson(doc.data()))
-          .toList();
-    });
-  }
+    Stream<List<UserAccount>> getNonCompanyUsersStream() {
+  return _firestore.collection("users").snapshots().map((snapshot) {
+    return snapshot.docs
+        .where((doc) => !(doc.data()['isCompany'] ?? false))
+        .map((doc) => UserAccount.formJson(doc.data()))
+        .toList();
+  });
+}
 
   Future<CompanyModel> getCompany(String uuid) async {
     try {

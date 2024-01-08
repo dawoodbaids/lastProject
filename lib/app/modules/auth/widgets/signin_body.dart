@@ -83,7 +83,7 @@ class SigninBody extends GetView<SigninController> {
                       child: const Text(
                         "   Forgot Your Password ?",
                         style: TextStyle(
-                          color: Colors.cyanAccent,
+                          color: Colors.blue,
                           fontStyle: FontStyle.italic,
                           fontSize: 15,
                         ),

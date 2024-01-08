@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:get/get.dart';
+import 'package:lavoro/app/modules/Setting/setting.dart';
 
 import 'package:lavoro/app/modules/auth/bindings/register_banding_company.dart';
 
@@ -119,6 +120,10 @@ class AppPages {
       page: () =>  AllJobsView(),
       binding: JobBinding(),
     ),
-    
+     GetPage(
+      name: _Paths.SETTINGS,
+      page: () =>  SettingsPage(),
+     
+    ),
   ];
 }

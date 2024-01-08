@@ -22,21 +22,7 @@ class HomeAppBar extends GetView<HomeController>
           fontWeight: FontWeight.bold,
         ),
       ),
-      bottom: bottom,
-      actions: [
-        CustomButton(
-          icons: Icons.search,
-          width: 35,
-          height: 35,
-          tooltip: 'Search',
-          padding: const EdgeInsets.all(6.0),
-          backgroundColor: Get.theme.colorScheme.onPrimary,
-          foregroundColor: Get.theme.colorScheme.primary,
-          borderRadiusValue: 10,
-          onPressed: () => Get.toNamed(Routes.SEARCH),
-        ),
-        
-      ],
+      
     );
   }
 

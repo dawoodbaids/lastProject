@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavoro/app/core/utils/helpers/system_helper.dart';
 import 'package:lavoro/app/data/model/companyModel.dart';
+import 'package:lavoro/app/modules/company_profile/list_company_profile.dart';
 import '../../data/model/user_model.dart';
-import '../../global_widgets/custom_card.dart';
-import '../../global_widgets/custom_list_tile.dart';
 import '../user_profile/widgets/custom_header_widget.dart';
-import '../user_profile/widgets/custom_profile_listtile.dart';
+
 
 class CompanyProfile extends StatelessWidget {
   CompanyModel? company;
@@ -45,39 +44,39 @@ class CompanyProfile extends StatelessWidget {
      return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          CustomHeaderWidget(
+         CustomHeaderWidget(
             isnotuser: isnotuser,
             useraccount: company,
           ),
-        CustomProfileListTile(
+        CustomCompanyProfileListTile(
           label: isnotuser ? company!.username : user.username,
           icons: Icons.text_fields,
           showCopyButton: false,
-        ), CustomProfileListTile(
+        ),  CustomCompanyProfileListTile(
           label: isnotuser ? company!.email : user.email,
           icons: Icons.email,
           showCopyButton: true,
         ),
-        CustomProfileListTile(
+       CustomCompanyProfileListTile (
           label: isnotuser ? company!.phoneNumber : user.phoneNumber,
           icons: Icons.phone,
           onTap: () => SystemHelper.makeCall(user.phoneNumber),
         ),
-        CustomProfileListTile(
+       CustomCompanyProfileListTile (
           label: isnotuser ? company!.country : user.country,
           icons: Icons.location_city,
           showCopyButton: false,
         ),
-        CustomProfileListTile(
+       CustomCompanyProfileListTile (
           label: isnotuser ? company!.descrption : user.descrption,
           icons: Icons.description,
           showCopyButton: false,
         ),
-        CustomProfileListTile(
+       CustomCompanyProfileListTile (
           label: isnotuser ? company!.country : user.country,
           icons: Icons.location_city,
           showCopyButton: false,
-        ),CustomProfileListTile(
+        ), CustomCompanyProfileListTile(
           label: isnotuser ? company!.selectedjobs : user.selectedjobs,
           icons: Icons.work,
           showCopyButton: false,
@@ -102,7 +101,7 @@ class CompanyProfile extends StatelessWidget {
                   ? company!.selectedLanguage.length
                   : selectedLanguages.length,
               itemBuilder: (context, index) {
-                return CustomProfileListTile(
+                return CustomCompanyProfileListTile(
                   label: isnotuser
                       ? company!.selectedLanguage[index]
                       : selectedLanguages[index],
@@ -112,9 +111,11 @@ class CompanyProfile extends StatelessWidget {
                 );
               },
             ),
-        // Other CustomProfileListTile widgets...
+        // Other widgets...
+         
+         Divider(color: Colors.black,height: 12,thickness: 2,),
           const Text(" posts that the company published",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
-
+ Divider(color: Colors.black,height: 12,thickness: 2,),
        FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
             future: FirebaseFirestore.instance
                 .collection('Jobs')

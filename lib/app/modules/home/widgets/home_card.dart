@@ -9,16 +9,19 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:lavoro/app/data/model/companyModel.dart';
 
 import 'package:lavoro/app/data/model/job_model.dart';
+import 'package:lavoro/app/data/model/user_model.dart';
 import 'package:lavoro/app/modules/company_profile/compant_profile_view.dart';
 import 'package:lavoro/app/modules/user_profile/view/user_profile_view.dart';
 
 class MyCardView extends StatefulWidget {
   CreateJobAcount job;
   CompanyModel company;
+UserAccount users;
   MyCardView({
     Key? key,
     required this.job,
     required this.company,
+    required this.users
   }) : super(key: key);
 
   @override
@@ -26,8 +29,8 @@ class MyCardView extends StatefulWidget {
 }
 
 class _MyCardView extends State<MyCardView> {
+  bool isDataAvailable = false;
   @override
-      bool isDataAvailable = false;
   void initState() {
     super.initState();
     checkDataAvailability();
@@ -35,24 +38,21 @@ class _MyCardView extends State<MyCardView> {
 
   void checkDataAvailability() {
     // Check if company's selected languages match job's selected languages
-    bool languagesMatch =
-        widget.company.selectedLanguage.contains(widget.job.selectedLanguage);
-
-    // Check if company's selected jobs match job's selected jobs
-    bool jobsMatch = widget.company.selectedjobs.contains(widget.job.selectedjobs);
-
+    List<String> list1 = widget.users.selectedLanguage;
+    List<String> list2 = widget.job.selectedLanguage;
+    List<String> list3 = widget.company.selectedLanguage;
+    bool languagesMatch = list1.any((language) => list2.contains(language));
+    bool jobsMatch = widget.users.selectedjobs.contains(widget.job.selectedjobs);
+    bool languagesMatchcompany = list3.any((language) => list2.contains(language));
+     bool compMatch = widget.company.selectedjobs.contains(widget.job.selectedjobs);
+     bool usermatch =widget.users.email.contains(widget.company.email)==false;
+    
     setState(() {
-      // Set isDataAvailable to true if either condition is met
-      isDataAvailable = languagesMatch || jobsMatch;
+      isDataAvailable = (usermatch&&(languagesMatch || jobsMatch  ||languagesMatchcompany||compMatch));
     });
   }
   Widget build(BuildContext context) {
-    if (kDebugMode) {
-      print(widget.job.companyId);
-    }
-  
-     if (isDataAvailable) {
-     
+    if (isDataAvailable) {
     return Card(
       borderOnForeground: true,
       elevation: 100,
@@ -84,6 +84,13 @@ class _MyCardView extends State<MyCardView> {
                     children: [
                       Text(
                         ' ${widget.company.username}',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        ' ${widget.company.isCompany}',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -163,9 +170,9 @@ class _MyCardView extends State<MyCardView> {
     );
     
   }
-  else {
-      return  Container();
-    }
+
+      return SizedBox();
+    
   }
 }
 

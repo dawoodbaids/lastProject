@@ -13,63 +13,63 @@ class EmpCategoriesRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         langBox(
-          imagePath: 'assets/images/web.jpg',
+          imagePath: 'assets/images/jobs/web.jpg',
           name: 'Web Developer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         langBox(
-          imagePath: 'assets/images/mobile.png',
+          imagePath: 'assets/images/jobs/mobile.png',
           name: 'Mobile App Developer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
        langBox(
-          imagePath: 'assets/images/soft.jpg',
+          imagePath: 'assets/images/jobs/soft.jpg',
           name: 'Software Engineer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
        langBox(
-          imagePath: 'assets/images/data.jpg',
+          imagePath: 'assets/images/jobs/data.jpg',
           name: 'Data Scientist',
           onPressed: () {
             handleCategorySelection();
           },
         ),
        langBox(
-          imagePath: 'assets/images/net.png',
+          imagePath: 'assets/images/jobs/net.png',
           name: 'Network Engineer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
        langBox(
-          imagePath: 'assets/images/cyper.jpg',
+          imagePath: 'assets/images/jobs/cyper.jpg',
           name: 'Cybersecurity Analyst',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         langBox(
-          imagePath: 'assets/images/system.jpg',
+          imagePath: 'assets/images/jobs/system.jpg',
           name: 'System Administrator',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         langBox(
-          imagePath: 'assets/images/base.png',
+          imagePath: 'assets/images/jobs/base.png',
           name: 'Database Administrator',
           onPressed: () {
             handleCategorySelection();
           },
         ),
         langBox(
-          imagePath: 'assets/images/ai.jpg',
+          imagePath: 'assets/images/jobs/ai.jpg',
           name: 'AI Developer',
           
           onPressed: () {
@@ -77,14 +77,14 @@ class EmpCategoriesRow extends StatelessWidget {
           },
         ),
         langBox(
-          imagePath: 'assets/images/dev.jpg',
+          imagePath: 'assets/images/jobs/dev.jpg',
           name: 'DevOps Engineer',
           onPressed: () {
             handleCategorySelection();
           },
         ),
        langBox(
-          imagePath: 'assets/images/game.png',
+          imagePath: 'assets/images/jobs/game.png',
           name: 'Game Developer',
           onPressed: () {
             handleCategorySelection();
