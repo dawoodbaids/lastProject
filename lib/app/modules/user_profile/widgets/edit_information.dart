@@ -20,11 +20,19 @@ class EditProfileInformation extends GetView<UserProfileController> {
     String initialName = currentUser.username;
     String initialPhone = currentUser.phoneNumber;
     String initialDescription = currentUser.descrption;
+    String initialjob = currentUser.selectedjobs;
+    List<String> initiallang = currentUser.selectedLanguage;
+    String initialexp = currentUser.experience;
 
     // Assign initial values to controller text fields
     controller.username.text = initialName;
     controller.phoneNumber.text = initialPhone;
     controller.description.text = initialDescription;
+    controller.selectedJob.value= initialjob;
+    controller.selectedExperience.value= initialexp;
+
+controller.selectedLanguages = RxList<String>.from(initiallang);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Edit Information"),
@@ -59,7 +67,7 @@ class EditProfileInformation extends GetView<UserProfileController> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple),
                       borderRadius: BorderRadius.circular(18.0),
-                      color: Colors.white,
+                      color: Colors.black12,
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -125,7 +133,7 @@ class EditProfileInformation extends GetView<UserProfileController> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple),
                       borderRadius: BorderRadius.circular(18.0),
-                      color: Colors.white,
+                      color: Colors.black12,
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -165,8 +173,7 @@ class EditProfileInformation extends GetView<UserProfileController> {
                                       decoration: BoxDecoration(
                                         color: controller.selectedLanguages
                                                 .contains(language)
-                                            ? const Color.fromARGB(
-                                                255, 1, 26, 46)
+                                            ? Colors.purple
                                             : Colors.grey,
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -193,43 +200,41 @@ class EditProfileInformation extends GetView<UserProfileController> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Select Experience:',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 19)),
-                      const SizedBox(height: 8.0),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.purple),
-                          borderRadius: BorderRadius.circular(8.0),
-                          color: Colors.grey[300],
-                        ),
-                        padding: const EdgeInsets.all(4.0),
-                        child: DropdownButton<String>(
-                          hint: const Text(
-                              '                                                      Select Experience'),
-                          value:
-                              controller.selectedExperience.value.isNotEmpty &&
-                                      controller.experiences.contains(
-                                          controller.selectedExperience.value)
-                                  ? controller.selectedExperience.value
-                                  : null,
-                          onChanged: (String? value) {
-                            controller.selectedExperience.value = value ?? '';
-                          },
-                          items:
-                              controller.experiences.map((String experience) {
-                            return DropdownMenuItem<String>(
-                              value: experience,
-                              child: Text(experience),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    ],
-                  ),
+                 if (currentUser.isCompany == false)
+  Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text(
+        'Select Experience:',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+      ),
+      const SizedBox(height: 8.0),
+      Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.purple),
+          borderRadius: BorderRadius.circular(8.0),
+          color: Colors.grey,
+        ),
+        padding: const EdgeInsets.all(4.0),
+        child: DropdownButton<String>(
+          hint: const Text('Select Experience'),
+          value: controller.selectedExperience.value.isNotEmpty &&
+                  controller.experiences.contains(controller.selectedExperience.value)
+              ? controller.selectedExperience.value
+              : null,
+          onChanged: (String? value) {
+            controller.selectedExperience.value = value ?? '';
+          },
+          items: controller.experiences.map((String experience) {
+            return DropdownMenuItem<String>(
+              value: experience,
+              child: Text(experience),
+            );
+          }).toList(),
+        ),
+      ),
+    ],
+  ),
                       const SizedBox(height: 16),
              CustomButton(
   label: "Save",

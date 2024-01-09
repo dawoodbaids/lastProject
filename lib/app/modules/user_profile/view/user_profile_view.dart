@@ -28,7 +28,7 @@ class UserProfileView extends StatelessWidget {
               fontSize: 26),
         ),
         centerTitle: true,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: UserProfileBody(company: null,),
       bottomNavigationBar: BottomNavBar(

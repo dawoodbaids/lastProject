@@ -78,8 +78,10 @@ final Map<String, List<String>> languages = {
     selectedLanguages.clear();
     selectedLanguages.addAll(languages[job]!);
   }
-  @override
-  
+
+   void refreshPage() {
+    update(); // Use GetX's update() function to trigger UI refresh
+  }
   
   void onInit() {
     username = TextEditingController();

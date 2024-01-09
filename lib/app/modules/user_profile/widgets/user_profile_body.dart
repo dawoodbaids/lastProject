@@ -26,7 +26,10 @@ class UserProfileBody extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  
   Widget build(BuildContext context) {
+     _userProfileController.refreshPage();
+     
     final user = UserAccount.info;
     if (user == null) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
@@ -48,12 +51,15 @@ class UserProfileBody extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Column(
+      
         children: <Widget>[
+          
           CustomHeaderWidget(
             isnotuser: isnotuser,
             useraccount: company,
           ),
           const SizedBox(height: 20),
+          
           CustomProfileListTile(
             label: isnotuser ? company!.username : user.username,
             icons: Icons.text_fields,
@@ -71,6 +77,13 @@ class UserProfileBody extends StatelessWidget {
             icons: Icons.phone,
             onTap: () => SystemHelper.makeCall(user.phoneNumber),
           ),
+        if (user.isCompany == false)
+                  const SizedBox(height: 20),
+if (user.isCompany == false)
+            CustomProfileListTile(
+            label:  user.experience,
+            icons: Icons.timer,
+             ),
           const SizedBox(height: 20),
           CustomProfileListTile(
             label: isnotuser ? company!.country : user.country,
@@ -122,20 +135,12 @@ class UserProfileBody extends StatelessWidget {
               CustomButton(
                 label: "Edit Information",
                 icons: Icons.edit,
-                onPressed: () {
-    Get.toNamed(Routes.EDIT_INFO);
-
-
-                  // _userProfileController.updateUserInFirestore(
-                  //   newUsername: 'New Username',
-                  //   newSelectedJobs: 'New Selected Job',
-                  //   newPhoneNumber: 'New Phone Number',
-                  //   newJobDescription: 'New Job Description',
-                  //   newProgrammingLanguages: ['Dart', 'Python'],
-                  //   newSelectedLanguage: 'English',
-                  //   newExperince: 'New Experience',
-                  // );
-                },
+             onPressed: () async {
+  await Get.toNamed(Routes.EDIT_INFO);
+  // This code executes after the user navigates back from the editing page
+  // You can add logic here to refresh the user profile page
+  // Call the refresh function after returning from the editing page
+},
               ),
 SizedBox(height: 17,),
               // Other CustomProfileListTile widgets...
