@@ -28,6 +28,7 @@ class AllJobsView extends StatelessWidget {
       ),
       body: const AllJobsBody(),
         floatingActionButton: UserAccount.info?.isCompany == true
+
           ? FloatingActionButton(
               onPressed: () {
                 Get.to(const JobView());

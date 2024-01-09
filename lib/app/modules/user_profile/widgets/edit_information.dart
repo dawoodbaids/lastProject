@@ -1,74 +1,65 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable, avoid_print, sort_child_properties_last, prefer_const_constructors, unrelated_type_equality_checks, use_build_context_synchronously
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
-import 'package:image_picker/image_picker.dart';
-import 'package:lavoro/app/modules/auth/controllers/register_controller_Company.dart';
-
-import '../../../core/utils/helpers/custom_bottom_sheet.dart';
-
 import '../../../core/utils/validators.dart';
-
+import '../../../data/model/user_model.dart';
 import '../../../global_widgets/custom_button.dart';
 import '../../../global_widgets/custom_textformfield.dart';
+import '../controllers/user_profile_controller.dart';
 
-class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
-  const RegisterBodyCompany({super.key});
+class EditProfileInformation extends GetView<UserProfileController> {
+  const EditProfileInformation({Key? key}) : super(key: key);
+
+ 
 
   @override
-
   Widget build(BuildContext context) {
-     Get.put(RegisterControllerCompany());
-    return  Scaffold(
-     
+    Get.put(UserProfileController());
+    final currentUser = UserAccount.info!;
+
+    // Initialize initial values
+    String initialName = currentUser.username;
+    String initialPhone = currentUser.phoneNumber;
+    String initialDescription = currentUser.descrption;
+
+    // Assign initial values to controller text fields
+    controller.username.text = initialName;
+    controller.phoneNumber.text = initialPhone;
+    controller.description.text = initialDescription;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Edit Information"),
+      ),
       body: Obx(() => Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: SingleChildScrollView(
-        child: Form(
-          key: controller.formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(height: Get.height * .05),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  PickUserImageWidget(
-                    onChanged: (imagePath) => controller.imagePath = imagePath,
+            padding: const EdgeInsets.all(10.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const SizedBox(height: 16.0),
+
+                    const SizedBox(height: 16.0),
+                  CustomTextFormField(
+                    controller: controller.username,
+                    prefixIcon: const Icon(Icons.person),
                   ),
-                ],
-              ),
-              CustomTextFormField(
-                controller: controller.CompanyNameController,
-                label: 'Company Name',
-                prefixIcon: const Icon(Icons.cabin),
-                validator: CustomValidator.validateUsername,
-              ),
-              const SizedBox(height: 16.0),
-              
-              CustomTextFormField(
-                controller: controller.cemailController,
-                label: 'Email',
-                autofillHints: const [AutofillHints.email],
-                prefixIcon: const Icon(Icons.email),
-                validator: CustomValidator.validateEmail,
-              ),
-               const SizedBox(height: 10.0),
-              const SizedBox(height: 16.0),
-              CustomTextFormField(
-                controller: controller.jobDescriptionController,
-                label: 'Description about the company',
-                prefixIcon: const Icon(Icons.description),
-              ),
-              const SizedBox(height: 16.0),
-               Container(
+             const SizedBox(height: 16),
+                  CustomTextFormField(
+                  
+                    controller: controller.description,
+                    prefixIcon: const Icon(Icons.description),
+                  ),
+                   const SizedBox(height: 16),
+                   CustomTextFormField(
+                  controller: controller.phoneNumber,
+                    prefixIcon: const Icon(Icons.phone),
+                    keyboardType: TextInputType.phone,
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple),
                       borderRadius: BorderRadius.circular(18.0),
-                      color: Colors.black12,
+                      color: Colors.white,
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -134,7 +125,7 @@ class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple),
                       borderRadius: BorderRadius.circular(18.0),
-                      color: Colors.black12,
+                      color: Colors.white,
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -161,9 +152,12 @@ class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
 
                                     // Toggle the selected state
                                     controller.addToSelectedLanguages(language);
-                                    print(controller.selectedLanguages);
-                                    print(controller.selectedLanguages
+                             
+                                      print(controller.selectedLanguages);
+                             
+                                      print(controller.selectedLanguages
                                         .contains(language));
+                                    
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(5.0),
@@ -202,7 +196,7 @@ class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Select City',
+                      const Text('Select Experience:',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 19)),
                       const SizedBox(height: 8.0),
@@ -210,179 +204,87 @@ class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.purple),
                           borderRadius: BorderRadius.circular(8.0),
-                          color: Colors.grey,
+                          color: Colors.grey[300],
                         ),
-                        padding: EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: DropdownButton<String>(
                           hint: const Text(
-                              '                                                                Select City'
-                              ,style: TextStyle(color: Colors.black)),
+                              '                                                      Select Experience'),
                           value:
-                              controller.selectedCity.value.isNotEmpty &&
-                                      controller.countries.contains(
-                                          controller.selectedCity.value)
-                                  ? controller.selectedCity.value
+                              controller.selectedExperience.value.isNotEmpty &&
+                                      controller.experiences.contains(
+                                          controller.selectedExperience.value)
+                                  ? controller.selectedExperience.value
                                   : null,
                           onChanged: (String? value) {
-                            controller.selectedCity.value = value ?? '';
+                            controller.selectedExperience.value = value ?? '';
                           },
                           items:
-                              controller.countries.map((String countries) {
+                              controller.experiences.map((String experience) {
                             return DropdownMenuItem<String>(
-                              value: countries,
-                              child: Text(countries),
+                              value: experience,
+                              child: Text(experience),
                             );
                           }).toList(),
                         ),
                       ),
                     ],
                   ),
-  const SizedBox(height: 20),
-  
-         
-           
-              CustomTextFormField(
-                controller: controller.cphoneController,
-                label: 'Phone Number',
-                prefixIcon: const Icon(Icons.phone),
-                keyboardType: TextInputType.phone,
-                validator: CustomValidator.validatePhoneNumber,
-              ),
-              const SizedBox(height: 16.0),
-              CustomTextFormField(
-                controller: controller.cpasswordController,
-                label: 'Password',
-                prefixIcon: const Icon(Icons.lock),
-                isPassword: true,
-                validator: CustomValidator.validatePassword,
-              ),
-              const SizedBox(height: 16.0),
-              CustomTextFormField(
-                controller: controller.cconfirmPasswordController,
-                label: 'Confirm Password',
-                prefixIcon: const Icon(Icons.lock_reset),
-                isPassword: true,
-                validator: (value) => CustomValidator.confirmPassword(
-                    value, controller.cpasswordController.text),
-              ),
-              const SizedBox(height: 16.0),
-              
-                CustomButton(
-  onPressed: () async {
-    if (controller.formKey.currentState!.validate()) {
-  if (controller.selectedLanguages.isNotEmpty &&
-      controller.selectedJobs.isNotEmpty &&
-      controller.selectedCity.isNotEmpty) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: Colors.blue,
-          content: Row(
-            children: const [
-              Icon(Icons.info, color: Colors.white),
-              SizedBox(width: 10),
-              Text(
-                'All required fields are filled!',
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
-          ),
-        );
-      },
-    );
+                      const SizedBox(height: 16),
+             CustomButton(
+  label: "Save",
+  onPressed: () {
+    String updatedName = controller.username.text;
+    String updatedDescription = controller.description.text;
+    String updatedPhone = controller.phoneNumber.text;
+    String updatedjobs = controller.selectedJob.value;
+    String updatedexperience = controller.selectedExperience.value;
+    List<String> updatedlanguges = controller.selectedLanguages;
 
-    // Call your function
-    await controller.signUp();
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          'Please fill in all required fields',
-          style: TextStyle(color: Colors.white),
-        ),
+    // Check if any field is empty
+    if (updatedName.isEmpty ||
+        updatedDescription.isEmpty ||
+        updatedPhone.isEmpty ||
+        updatedjobs.isEmpty ||
+        updatedexperience.isEmpty ||
+        updatedlanguges.isEmpty) {
+      // Show red Snackbar and error message for empty fields
+      Get.snackbar(
+        'Error',
+        'Please fill all fields',
         backgroundColor: Colors.red,
-      ),
-    );
-  }
-}
+        colorText: Colors.white,
+      );
+    } else {
+      // All fields are filled, proceed with the action
+      controller.updateUserInFirestore(
+        newUsername: updatedName,
+        newPhoneNumber: updatedPhone,
+        newJobDescription: updatedDescription,
+        newSelectedJobs: updatedjobs,
+        newProgrammingLanguages: updatedlanguges,
+        newExperience: updatedexperience,
+      );
+
+      // Show green success Snackbar and navigate back after a successful save
+      Get.snackbar(
+        'Success',
+        'Profile updated successfully',
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+        onTap: (_) => Get.back(),
+      );
+    }
   },
-  label: 'SignUp',
 ),
+
+                const SizedBox(height: 16),
+                  const SizedBox(height: 16),
             ],
           ),
         ),
-      ),
-    )));
-  }
-}
-
-class PickUserImageWidget extends StatefulWidget {
-  final ValueChanged<String?>? onChanged;
-  const PickUserImageWidget({super.key, this.onChanged});
-
-  @override
-  State<PickUserImageWidget> createState() => _PickUserImageWidgetState();
-}
-
-class _PickUserImageWidgetState extends State<PickUserImageWidget> {
-  XFile? image;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Stack(
-        children: [
-          Container(
-            height: 125,
-            width: 125,
-            margin: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              border: Border.all(
-                width: 5,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            child: ClipRRect(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              borderRadius: BorderRadius.circular(150),
-              child: image?.path != null
-                  ? Image.file(
-                      File(image!.path),
-                      fit: BoxFit.cover,
-                    )
-                  : const Icon(Icons.person, size: 100),
-            ),
-          ),
-          Positioned(
-            right: 10,
-            bottom: 10,
-            child: Container(
-              height: 40,
-              width: 29,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondary,
-                shape: BoxShape.circle,
-              ),
-              child: GestureDetector(
-                onTap: () async {
-                  final res = await CustomBottomSheet.imagePiker();
-                  if (res != null) {
-                    setState(() => image = res);
-                    widget.onChanged?.call(res.path);
-                  }
-                },
-                child: const Icon(
-                  Icons.add_circle,
-                  color: Colors.white,
-                  size: 28,
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
+      )));
+ 
+  
   }
 }

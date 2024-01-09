@@ -115,15 +115,44 @@ class UserAccount extends GetxController {
     isCompany:$isCompany,
     )''';
   }
+  Future<void> updateUserInFirestore({
+    required String newUsername,
+    required String newSelectedJobs,
+ required String newPhoneNumber,
+    required String newJobDescription,
+    required List<String> newProgrammingLanguages,
+    required String newSelectedLanguage,
+    required String newExperince
+  }) async {
+    try {
+      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+      final CollectionReference users = _firestore.collection('users');
 
-  // Future<void> updateCurrentUser() async {
-  //   try {
-  //     await DatabaseFirestore.updateUser(userAccount: this);
-  //     update();
-  //   } catch (e) {
-  //     if (kDebugMode) {
-  //       print('error updating user account: $e');
-  //     }
-  //   }
-  // }
+      // Update the specific fields in the user's information
+      await users.doc(uid).update({
+        'username': newUsername,
+        'jobDescrption': newJobDescription,
+        'phoneNumber':newPhoneNumber,
+        'Programing Language': newProgrammingLanguages,
+        'selectedLanguage': newSelectedLanguage,
+        'selectedjobs':newSelectedJobs,
+        'experience':newExperince,
+      });
+
+      // Optionally, update the local user information if needed
+      // For example:
+      // this.username = newUsername;
+      // this.descrption = newDescription;
+      // this.selectedLanguage = newSelectedLanguage;
+      // ...and so on
+
+      update(); // Notify GetX that the data has been updated
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error updating user account: $e');
+      }
+      rethrow; // Rethrow the exception to handle it in the calling code
+    }
+  }
 }
+  

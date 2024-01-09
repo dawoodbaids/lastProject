@@ -25,7 +25,8 @@ abstract class Routes {
   static const ALLJOBS = _Paths.ALLJOBS;
   static const INFO_PAGE = _Paths.INFO_PAGE;
   static const SETTINGS = _Paths.SETTINGS;
-  
+    static const EDIT_INFO = _Paths.EDIT_INFO;
+
   
 }
 
@@ -49,6 +50,8 @@ abstract class _Paths {
   static const USER_PROFILE = '/user-profile';
   static const JOB = '/JOB';
    static const EMPHOME = '/emp_home';
-    static const Ai= '/Ai';
-      static const ALLJOBS = '/JOBS';
+  static const Ai= '/Ai';
+  static const EDIT_INFO = '/edit_info';
+static const ALLJOBS = '/JOBS';
+ 
 }

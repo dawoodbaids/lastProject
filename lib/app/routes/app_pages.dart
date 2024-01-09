@@ -7,6 +7,7 @@ import 'package:lavoro/app/modules/auth/bindings/register_banding_company.dart';
 
 import 'package:lavoro/app/modules/home/views/Job_view.dart';
 import 'package:lavoro/app/modules/jobs/view/all_jobs_view.dart';
+import 'package:lavoro/app/modules/user_profile/widgets/edit_information.dart';
 
 import '../modules/auth/bindings/register_binding_employe.dart';
 import '../modules/auth/bindings/signin_binding.dart';
@@ -30,6 +31,7 @@ import '../modules/search/views/search_view.dart';
 
 import '../modules/splash/views/splash_view.dart';
 import '../modules/user_profile/bindings/user_profile_binding.dart';
+import '../modules/user_profile/view/edit_info.dart';
 import '../modules/user_profile/view/user_profile_view.dart';
 
 
@@ -60,6 +62,11 @@ class AppPages {
     GetPage(
       name: _Paths.SPLASH,
       page: () => const SplashView(),
+      // binding: SplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_INFO,
+      page: () =>  EditProfileInformation(),
       // binding: SplashBinding(),
     ),
     GetPage(
