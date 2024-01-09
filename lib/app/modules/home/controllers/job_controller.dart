@@ -107,7 +107,7 @@ class CreateJobController extends GetxController {
   User? get userInfo {
     return FirebaseAuth.instance.currentUser;
   }
-
+ final currentTime = DateTime.now();
   Future<void> createUser() async {
     CreateJobAcount createJobAccount = CreateJobAcount(
       jobdescription: jobDescriptionController.text,
@@ -117,6 +117,7 @@ class CreateJobController extends GetxController {
       experience: selectedExperience.value,
       companyId: userInfo!.uid,
       jobuid: uuid.v4(),
+      creationTime: currentTime
     );
     print(createJobAccount);
     await UserRepo.createUser(createJobAccount);

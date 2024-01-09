@@ -40,7 +40,7 @@ class JobBody extends GetView<CreateJobController> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple),
                       borderRadius: BorderRadius.circular(18.0),
-                      color: Colors.white,
+                        color: Colors.black12,
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -106,7 +106,7 @@ class JobBody extends GetView<CreateJobController> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple),
                       borderRadius: BorderRadius.circular(18.0),
-                      color: Colors.white,
+                      color: Colors.black12,
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Column(

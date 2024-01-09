@@ -14,6 +14,7 @@ class CreateJobAcount extends GetxController {
   final String selectedjobs;
   final String title;
   final String jobuid;
+  
   CreateJobAcount({
     required this.companyId,
     required this.jobdescription,
@@ -22,6 +23,8 @@ class CreateJobAcount extends GetxController {
     required this.title,
     required this.selectedLanguage,
     required this.jobuid,
+       required DateTime creationTime,
+
   });
   static CreateJobAcount? info;
 
@@ -45,6 +48,7 @@ class CreateJobAcount extends GetxController {
       'Title': title,
       'companyId': companyId,
       "jobuid": jobuid,
+          'creationTime': DateTime.now()
     };
   }
 
@@ -59,7 +63,10 @@ class CreateJobAcount extends GetxController {
           ? List<String>.from(json['Programing Language'])
           : ["Null"],
       selectedjobs: json['jobs'] ?? "SelectedJobs",
-    );
+      creationTime: json['creationTime'] != null
+      ? DateTime.fromMillisecondsSinceEpoch(json['creationTime'])
+      : DateTime.now(),);
+    
 
     return info!;
   }
@@ -78,6 +85,7 @@ class CreateJobAcount extends GetxController {
     List<String>? selectedLanguage,
     String? selectedjobs,
     String? companyId,
+    DateTime? creationTime,
   }) {
     return CreateJobAcount(
       companyId: jobuid ?? this.companyId,
@@ -87,6 +95,7 @@ class CreateJobAcount extends GetxController {
       selectedjobs: selectedjobs ?? this.selectedjobs,
       experience: experience ?? this.experience,
       jobuid: jobuid ?? this.jobuid,
+      creationTime: DateTime.now()
     );
   }
 
