@@ -300,26 +300,49 @@ class RegisterBodyEmployee extends GetView<RegisterControllerEmployee> {
                     value, controller.passwordController.text),
               ),
               const SizedBox(height: 16.0),
-              CustomButton(
-                onPressed: () async {
-                  if (controller.formKey.currentState!.validate()) {
-                    if (controller.selectedLanguages.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'Please fill in all required fields',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
-                    }
-                  }
+               CustomButton(
+  onPressed: () async {
+    if (controller.formKey.currentState!.validate() ||
+        (controller.selectedLanguages.isNotEmpty &&
+            controller.selectedJobs.isNotEmpty &&
+            controller.selectedCity.isNotEmpty&&controller.selectedExperience.isNotEmpty)) {
+      // All required fields are filled
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const AlertDialog(
+            backgroundColor: Colors.green,
+            content: Row(
+              children: [
+                Icon(Icons.info, color: Colors.white),
+                SizedBox(width: 10),
+                Text(
+                  'sucsses ',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+          );
+        },
+      );
 
-                  await controller.signUp();
-                },
-                label: 'SignUp',
-              ),
+      // Call your function
+      await controller.signUp();
+    } else {
+      // Please fill in all required fields
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Please fill in all required fields',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  },
+  label: 'SignUp',
+),
             ],
           ),
         ),

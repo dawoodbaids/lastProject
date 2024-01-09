@@ -170,7 +170,7 @@ final Map<String, List<String>> languages = {
         imagePath: imagePath!,
         uid: uid!,
       );
-
+      final currentTime = DateTime.now();
       UserAccount userAccount = UserAccount(
           uid: uid,
           username: CompanyNameController.text,
@@ -180,8 +180,9 @@ final Map<String, List<String>> languages = {
           email: cemailController.text,
          country: selectedCity.value,
         selectedjobs: selectedJob.value,
-       selectedLanguage: selectedLanguages,
-      experience: selectedExperience.value,
+          selectedLanguage: selectedLanguages,
+           experience: selectedExperience.value,
+          creationTime: currentTime,
           isCompany: true);
 
       await DatabaseFirestore.setUser(

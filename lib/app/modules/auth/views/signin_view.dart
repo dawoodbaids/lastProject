@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -16,7 +18,7 @@ class SigninView extends GetView<SigninController> {
       child: SafeArea(
         child: Scaffold(
           // appBar: AppBar(),
-          body: SigninBody(),
+          body: const SigninBody(),
         ),
       ),
     );

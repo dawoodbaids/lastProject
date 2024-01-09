@@ -37,6 +37,7 @@ class UserAccount extends GetxController {
     required this.country,
     required this.experience,
     required this.isCompany,
+   required DateTime creationTime,
   });
 
   Map<String, dynamic> toMap() {
@@ -52,6 +53,7 @@ class UserAccount extends GetxController {
       'experience': experience,
       'selectedjobs' :selectedjobs,
       'isCompany': isCompany ?? false,
+       'creationTime': DateTime.now()
     };
   }
 
@@ -69,7 +71,10 @@ class UserAccount extends GetxController {
           : ["Null"],
       selectedjobs: json['selectedjobs'] ?? "selectedjobs",
         experience: json['experience'] ?? "experience",
-        isCompany: json['isCompany'] ?? false);
+        isCompany: json['isCompany'] ?? false,
+         creationTime: json['creationTime'] != null
+      ? DateTime.fromMillisecondsSinceEpoch(json['creationTime'])
+      : DateTime.now(),);
     return info!;
   }
 
@@ -83,7 +88,9 @@ class UserAccount extends GetxController {
       String? country,
        String? experience,
       String? selectedjobs,
-     List<String>? selectedLanguage,}) {
+     List<String>? selectedLanguage,
+      DateTime? creationTime,}) {
+      
     return UserAccount(
       uid: uid ?? this.uid,
       username: username ?? this.username,
@@ -96,6 +103,7 @@ class UserAccount extends GetxController {
       selectedjobs: selectedjobs ?? this.selectedjobs,
       experience: experience ?? this.experience,
       isCompany: isCompany ?? this.isCompany,
+       creationTime: DateTime.now(),
     );
   }
 
@@ -113,6 +121,7 @@ class UserAccount extends GetxController {
        selectedjobs:$selectedjobs
     experience:$experience,
     isCompany:$isCompany,
+     
     )''';
   }
   Future<void> updateUserInFirestore({

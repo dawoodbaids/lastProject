@@ -56,7 +56,7 @@ class SigninBody extends GetView<SigninController> {
                     ),
                     SizedBox(height: Get.height * .05),
                     CustomTextFormField(
-                      controller: controller.emailController,
+                      controller: Get.put(SigninController()).emailController,
                       prefixIcon: const Icon(Icons.email),
                       label: "Email",
                       keyboardType: TextInputType.emailAddress,
