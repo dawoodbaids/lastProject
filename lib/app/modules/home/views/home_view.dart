@@ -20,7 +20,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: const HomeAppBar(),
-      body:  HomeBody(),
+      body:  const HomeBody(),
        
           
       bottomNavigationBar: BottomNavBar(

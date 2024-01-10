@@ -37,7 +37,7 @@ class UserAccount extends GetxController {
     required this.country,
     required this.experience,
     required this.isCompany,
-   required DateTime creationTime,
+  //  required DateTime creationTime,
   });
 
   Map<String, dynamic> toMap() {
@@ -53,12 +53,12 @@ class UserAccount extends GetxController {
       'experience': experience,
       'selectedjobs' :selectedjobs,
       'isCompany': isCompany ?? false,
-       'creationTime': DateTime.now()
+      //  'creationTime': DateTime.now()
     };
   }
 
   factory UserAccount.formJson(Map<String, dynamic> json) {
-    info = UserAccount(
+    var userAccount = info = UserAccount(
         uid: json["uuid"] ?? "uuid",
         username: json['username'] ?? "UserName",
         imageUrl: json['imageUrl'] ?? "ImageUrl",
@@ -72,9 +72,10 @@ class UserAccount extends GetxController {
       selectedjobs: json['selectedjobs'] ?? "selectedjobs",
         experience: json['experience'] ?? "experience",
         isCompany: json['isCompany'] ?? false,
-         creationTime: json['creationTime'] != null
-      ? DateTime.fromMillisecondsSinceEpoch(json['creationTime'])
-      : DateTime.now(),);
+      //    creationTime: json['creationTime'] != null
+      // ? DateTime.fromMillisecondsSinceEpoch(json['creationTime'])
+      // : DateTime.now(),
+      );
     return info!;
   }
 
@@ -89,7 +90,8 @@ class UserAccount extends GetxController {
        String? experience,
       String? selectedjobs,
      List<String>? selectedLanguage,
-      DateTime? creationTime,}) {
+     // DateTime? creationTime,}
+    } ) {
       
     return UserAccount(
       uid: uid ?? this.uid,
@@ -103,7 +105,7 @@ class UserAccount extends GetxController {
       selectedjobs: selectedjobs ?? this.selectedjobs,
       experience: experience ?? this.experience,
       isCompany: isCompany ?? this.isCompany,
-       creationTime: DateTime.now(),
+      // creationTime: DateTime.now(),
     );
   }
 

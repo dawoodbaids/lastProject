@@ -4,14 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavoro/app/data/model/user_model.dart';
 
-
 import '../../../data/provider/user_firebase.dart';
-
 import '../../../routes/app_pages.dart';
 
 class SigninController extends GetxController {
-  // final formKey = GlobalKey<FormState>();
-  RxBool isLoading = false.obs;
+  RxBool isLoading = false.obs; // استخدام RxBool لحالة التحميل
   late TextEditingController emailController;
   late TextEditingController passwordController;
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -23,22 +20,26 @@ class SigninController extends GetxController {
     super.onInit();
   }
 
-  Future<bool> login(String email, String password) async {
+  Future<void> login(String email, String password) async {
     try {
+      isLoading(true); // تغيير حالة التحميل لتظهر التحميل أثناء عملية تسجيل الدخول
+
       await auth.signInWithEmailAndPassword(email: email, password: password);
 
       await DatabaseFirestore.getUser();
+
+      // إظهار معلومات المستخدم إذا كانت مُفعلة Debug Mode
       if (kDebugMode) {
         print(UserAccount.info);
       }
 
+      // انتقال المستخدم إلى الصفحة الرئيسية بعد تسجيل الدخول
       Get.offAllNamed(Routes.HOME);
 
-      return true;
     } on FirebaseAuthException catch (e) {
-      String errorMessage =
-          'Error Occurred During Login Please Try Again Later';
+      String errorMessage = 'Error Occurred During Login Please Try Again Later';
 
+      // تحديد رسالة الخطأ استنادًا إلى نوع الخطأ
       switch (e.code) {
         case 'invalid-email':
           errorMessage = 'Invalid Email Address Please Enter A Valid Email';
@@ -47,16 +48,16 @@ class SigninController extends GetxController {
           errorMessage = 'This user account has been disabled';
           break;
         case 'user-not-found':
-          errorMessage = 'user-not-found';
+          errorMessage = 'User not found';
           break;
         case 'wrong-password':
-          errorMessage =
-              'invalid Eail Or Password Please Check Your Credentials';
+          errorMessage = 'Invalid Email Or Password, Please Check Your Credentials';
           break;
         default:
           errorMessage = 'Error: ${e.message}';
       }
 
+      // عرض الخطأ باستخدام GetX SnackBar
       Get.snackbar(
         "About Login".tr,
         "Login Message".tr,
@@ -73,7 +74,8 @@ class SigninController extends GetxController {
         ),
       );
 
-      return false;
+    } finally {
+      isLoading(false); // إيقاف حالة التحميل بعد الانتهاء من عملية تسجيل الدخول
     }
   }
 

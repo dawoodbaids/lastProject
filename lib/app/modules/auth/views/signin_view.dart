@@ -1,7 +1,4 @@
-// ignore_for_file: unnecessary_const
-
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../../global_widgets/loading_widget.dart';
@@ -13,12 +10,15 @@ class SigninView extends GetView<SigninController> {
 
   @override
   Widget build(BuildContext context) {
+    // Lazily initialize the SigninController
+   
+
     return const LoadingWidget(
       //isLoading: controller.isLoading,
       child: SafeArea(
         child: Scaffold(
           // appBar: AppBar(),
-          body: const SigninBody(),
+          body: SigninBody(),
         ),
       ),
     );

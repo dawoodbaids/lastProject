@@ -33,7 +33,7 @@ class UserProfileView extends StatelessWidget {
       body: UserProfileBody(company: null,),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: 2, // Adjust the selectedIndex for UserProfileView
-        onTabChange: (index) {
+        onTabChange: ( index) {
           switch (index) {
             case 0:
               Get.toNamed('/home'); // Navigate to HomeView

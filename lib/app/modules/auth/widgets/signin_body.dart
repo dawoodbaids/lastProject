@@ -22,7 +22,10 @@ class SigninBody extends GetView<SigninController> {
   bool get isLoading => false;
 
   @override
+  
   Widget build(BuildContext context) {
+       Get.put(SigninController());
+
     if (kDebugMode) {
       print(UserAccount.info);
     }
@@ -56,7 +59,7 @@ class SigninBody extends GetView<SigninController> {
                     ),
                     SizedBox(height: Get.height * .05),
                     CustomTextFormField(
-                      controller: Get.put(SigninController()).emailController,
+                      controller: controller.emailController,
                       prefixIcon: const Icon(Icons.email),
                       label: "Email",
                       keyboardType: TextInputType.emailAddress,

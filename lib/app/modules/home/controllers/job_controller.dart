@@ -117,7 +117,7 @@ class CreateJobController extends GetxController {
       experience: selectedExperience.value,
       companyId: userInfo!.uid,
       jobuid: uuid.v4(),
-      creationTime: currentTime
+      // creationTime: currentTime
     );
     print(createJobAccount);
     await UserRepo.createUser(createJobAccount);
